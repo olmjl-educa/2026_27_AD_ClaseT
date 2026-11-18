@@ -13,10 +13,15 @@ public class DemoConexionMySQL {
 
         try (Connection conexion = new ConexionBD(Path.of("src/db.properties")).obtenerConexion()) {
             System.out.println("Conexión establecida OK.");
-        } catch (DAOException e) {
+        } catch (DAOException | SQLException e) {
             System.err.println("Error al conectar " + e.getMessage());
-        } catch (SQLException e) {
-            System.err.println("Error al conectar " + e.getMessage());
+            Throwable causa = e.getCause();
+            if (causa instanceof SQLException) {
+                SQLException sqle = (SQLException) causa;
+                System.err.println("Motivo: " + sqle.getMessage());
+                System.err.println("SQLState: " + sqle.getSQLState());
+                System.err.println("Código: " + sqle.getErrorCode());
+            }
         }
     }
 }
