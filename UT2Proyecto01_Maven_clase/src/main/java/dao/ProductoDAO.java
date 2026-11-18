@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface ProductoDAO {
     /**
-     * Guarda en el fichero un producto nuevo
+     * Guarda un producto nuevo donde corresponda
      * @param producto
      * @throws DAOException
      */
