@@ -100,10 +100,18 @@ public class DemoConexionMySQL {
         }
     } // Fin del main
 
+    // LO SUSTITUIMOS POR LLAMADAS a toString() DE LA CLASE Producto
     private static void mostrar(List<Producto> productos) {
-        System.out.printf("%-10s %10s%n", "Referencia", "Precio");
         for (Producto p : productos) {
-            System.out.printf("%-10d %10.2f%n", p.getReferencia(), p.getPrecio());
+            System.out.println(p);
         }
     }
+
+    // LO SUSTITUIMOS POR LLAMADAS a toString() DE LA CLASE Producto
+//    private static void mostrar0(List<Producto> productos) {
+//        System.out.printf("%-10s %10s%n", "Referencia", "Precio");
+//        for (Producto p : productos) {
+//            System.out.printf("%-10d %10.2f%n", p.getReferencia(), p.getPrecio());
+//        }
+//    }
 }
