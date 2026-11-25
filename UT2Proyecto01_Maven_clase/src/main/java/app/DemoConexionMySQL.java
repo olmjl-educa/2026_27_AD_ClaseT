@@ -20,6 +20,7 @@ public class DemoConexionMySQL {
     public static void main(String[] args) {
         Random azar = new Random();
         Path ruta = Path.of("src/main/db.properties");
+
         // (Connection conexion = new ConexionBD()).obtenerConexion())
         try  {
             // Nos creamos un objeto ConexionBD a partir del fichero db.properties
@@ -52,6 +53,39 @@ public class DemoConexionMySQL {
             // 4. Mostrar los productos.
             System.out.println("=== Precios tras actualización de precios ===");
             mostrar(dao.listar());
+
+            // 5. Insertar un producto para luego borrarlo
+            // id=9001, precio=5.00
+            dao.insertar(new Producto(9001, 5.00));
+
+            // Mostrar lista completa
+            System.out.println("=== Productos tras insertar el 9001 ===");
+            mostrar(dao.listar());
+
+            // Eliminar ese registro
+            System.out.println("¿Se ha eliminado el producto 9001? " + dao.eliminar(9001));
+            System.out.println("Intentando eliminar de nuevo el producto 9001? " + dao.eliminar(9001));
+            //dao.eliminar(9001);
+
+            // Volver a mostrar lista completa para comprobar borrado
+            System.out.println("=== Productos tras eliminar el 9001 ===");
+            mostrar(dao.listar());
+
+            // 6. Buscar el 1001 y mostrar mensaje de existe o no
+            Producto producto = dao.buscar(1001);
+            // if (producto != null) {
+            //     System.out.println("El producto 1001 existe.");
+            // } else {
+            //     System.out.println("El producto 1001 no existe.");
+            // }
+            System.out.println(producto != null
+                    ? "El producto 1001 existe."
+                    : "El producto 1001 no existe.");
+
+            // Comprobar si existe el 9999 (que no existe)
+            System.out.println("¿Existe el 9999? " + (dao.buscar(9999) != null));   //
+            // Comprobar si existe el 9001 (que ya hemos eliminado)
+            System.out.println("¿Existe el 9001? " + (dao.buscar(9001) != null));   //
 
 
         } catch (DAOException e) {

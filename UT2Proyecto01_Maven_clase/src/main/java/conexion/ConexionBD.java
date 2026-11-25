@@ -23,7 +23,7 @@ public class ConexionBD {
         try (BufferedReader lector = Files.newBufferedReader(ficheroPropiedades)) {
             propiedadesConexion.load(lector);
         } catch (IOException e) {
-            throw new DAOException("No se puede leer el fichero properties. " + ficheroPropiedades);
+            throw new DAOException("No se puede leer el fichero properties. " + ficheroPropiedades, e);
         }
         this.url = propiedadesConexion.getProperty("url");
         this.usuario = propiedadesConexion.getProperty("usuario");
@@ -40,7 +40,7 @@ public class ConexionBD {
             return conexion;
         } catch (SQLException sqle) {
             sqle.printStackTrace();
-            throw new DAOException("Error en obtenerConexion" + sqle.getMessage());
+            throw new DAOException("Error en obtenerConexion" + sqle.getMessage(), sqle);
 
         }
     }

@@ -26,8 +26,21 @@ public interface ProductoDAO {
      */
     boolean actualizar(Producto producto) throws DAOException;
 
+    /**
+     *
+     * @param referencia
+     * @return
+     * @throws DAOException
+     */
     boolean eliminar(int referencia) throws DAOException;
 
     // Buscar y listar por id
+
+    /**
+     *
+     * @param referencia
+     * @return
+     * @throws DAOException
+     */
     Producto buscar(int referencia) throws DAOException;
 }

@@ -8,5 +8,6 @@ public class DAOException extends Exception {
     // Para guardar la causa original (IOException, SQLException,...)
     public DAOException(String mensaje, Throwable causa) {
         super(mensaje, causa);
+        causa.printStackTrace();
     }
 }

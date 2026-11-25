@@ -80,6 +80,28 @@ public class ProductoDAOImplFicheros implements ProductoDAO {
         }
     }
 
+    /**
+     *
+     * @param referencia
+     * @return
+     * @throws DAOException
+     */
+    @Override
+    public boolean eliminar(int referencia) throws DAOException {
+        throw new UnsupportedOperationException("Eliminar no está implementado con ficheros.");
+    }
+
+    /**
+     *
+     * @param referencia
+     * @return
+     * @throws DAOException
+     */
+    @Override
+    public Producto buscar(int referencia) throws DAOException {
+        throw new UnsupportedOperationException("Buscar no está implementado con ficheros.");
+    }
+
     // MÉTODOS AUXILIARES
     // Contar el número de registro que contiene el fichero
     private long contar (RandomAccessFile raf) throws IOException {
